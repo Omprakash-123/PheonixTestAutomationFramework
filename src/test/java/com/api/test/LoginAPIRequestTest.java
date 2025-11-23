@@ -4,21 +4,29 @@ import static io.restassured.RestAssured.*;
 
 import static org.hamcrest.Matchers.*;
 
+import java.io.IOException;
+
 import org.testng.annotations.Test;
+
+import com.api.pojo.UserCredentials;
+
+import static com.api.utils.ConfigManager.*;
 
 import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
 
-public class LoginAPIRequest {
+public class LoginAPIRequestTest {
 
 	@Test
-	public void loginAPITest() {
+	public void loginAPITest1() throws IOException {
 		
+		
+		System.out.println(System.getProperty("env"));
 		UserCredentials userCredentials =new UserCredentials("iamfd","password");
 		
 		
 		given()
-		.baseUri("http://64.227.160.186:9000/v1")
+		.baseUri(getProperty("BASE_URI"))
 		.and()
 		.contentType(ContentType.JSON)
 		.and()
