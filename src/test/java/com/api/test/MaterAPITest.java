@@ -45,6 +45,21 @@ public class MaterAPITest {
 		.body("data.mst_oem.name",everyItem(notNullValue()))
 		.body(JsonSchemaValidator.matchesJsonSchemaInClasspath("response-schema/MasterAPIResponseSchema.json"));
 	}
+    
+    public void invalidTokenMasterAPITest() throws IOException {
+    	given()
+		.baseUri(getProperty("BASE_URI"))
+		.and()
+		.header("Authorization","")
+		.and()
+		.contentType("")
+		.log().all()
+		.when()
+		.post("master")
+		.then()
+		.log().all()
+		.statusCode(401);
+    }
 	
 	
 }
