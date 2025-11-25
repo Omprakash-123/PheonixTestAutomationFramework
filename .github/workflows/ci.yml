@@ -5,7 +5,17 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
+  schedule:   #Schedule the cron job for mid-night IST
+    - cron: "30 18 * * *"
+  workflow_dispatch:
+    inputs:
+      env:
+        description: "Environment"
+        type: choice
+        options: [qa,uat,dev]
+        default: qa
+        required: true
+        
 jobs:
   test:
     runs-on: ubuntu-latest
