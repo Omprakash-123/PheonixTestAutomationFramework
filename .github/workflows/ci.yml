@@ -1,5 +1,3 @@
-
-
 name: Phoenix test automation workflow
 
 on:
@@ -10,17 +8,17 @@ on:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-    - name: Execute the test automation framework
-      run: mvn clean test -DsuiteXmlFile=testng.xml -Denv=qa 
+      - uses: actions/checkout@v4
 
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Run Maven Tests (TestNG Suite)
+        run: mvn clean test -DsuiteXmlFile=testng.xml -Denv=qa
