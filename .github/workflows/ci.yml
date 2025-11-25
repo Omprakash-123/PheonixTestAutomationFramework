@@ -15,6 +15,13 @@ on:
         options: [qa,uat,dev]
         default: qa
         required: true
+
+      suiteXmlFile:
+        description: "testNG xml file"
+        type: choice
+        options: [testng.xml,smoke.xml,regression.xml]
+        default: testng.xml
+        required: true   
         
 jobs:
   test:
@@ -31,7 +38,7 @@ jobs:
           cache: maven
 
       - name: Run Maven Tests (TestNG Suite)
-        run: mvn clean test -DsuiteXmlFile=./testng.xml -Denv=qa
+        run: mvn clean test -DsuiteXmlFile=${{github.event.inputs.suiteXmlFile}} -Denv=${{github.event.inputs.env}}
 
       - name: Upload a Build Artifact
         if: always()
