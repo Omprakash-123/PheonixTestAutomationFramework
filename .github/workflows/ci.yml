@@ -21,4 +21,5 @@ jobs:
           cache: maven
 
       - name: Run Maven Tests (TestNG Suite)
-        run: mvn clean test -DsuiteXmlFile=testng.xml -Denv=qa
+        run: mvn clean test -DsuiteXmlFile=./testng.xml -Denv=qa
+
