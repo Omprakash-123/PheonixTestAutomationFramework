@@ -1,4 +1,4 @@
-name: Phoenix test automation workflow
+name: Pheonix test automation workflow
 
 on:
   push:
