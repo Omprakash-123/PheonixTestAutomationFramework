@@ -10,7 +10,8 @@
 	<properties>
 		<maven.compiler.source>14</maven.compiler.source>
 		<maven.compiler.target>14</maven.compiler.target>
-		
+	</properties>
+	<build>
 	<plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -18,12 +19,12 @@
         <version>3.5.4</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>testng.xml</suiteXmlFile>
+            <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       </plugin>
-</plugins>
-	</properties>
+      </plugins>
+	</build>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
 		<dependency>
@@ -53,4 +54,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
 </project>
