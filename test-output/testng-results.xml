@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-11-28T00:35:57 IST" name="Default suite" finished-at="2025-11-28T00:36:00 IST" duration-ms="3187">
+    <groups>
+    </groups>
+    <test started-at="2025-11-28T00:35:57 IST" name="Default test" finished-at="2025-11-28T00:36:00 IST" duration-ms="3187">
+      <class name="com.api.test.LoginAPIRequestTest">
+        <test-method signature="loginAPITest1()[pri:0, instance:com.api.test.LoginAPIRequestTest@53fe15ff]" started-at="2025-11-28T00:35:57 IST" name="loginAPITest1" finished-at="2025-11-28T00:36:00 IST" duration-ms="3126" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginAPITest1 -->
+      </class> <!-- com.api.test.LoginAPIRequestTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
