@@ -23,7 +23,7 @@ public class CountAPITest {
 	public void verifyCountAPIResponse() throws IOException {
 		
 		given()
-		.spec(SpecUtil.requestSpecWithAuth())
+		.spec(SpecUtil.requestSpecWithAuth(FD))
 		.when()
 		.get("/dashboard/count")
 		.then()

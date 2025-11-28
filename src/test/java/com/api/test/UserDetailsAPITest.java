@@ -27,7 +27,7 @@ public class UserDetailsAPITest{
 	  
 		
 		given()
-		.spec(SpecUtil.requestSpecWithAuth())
+		.spec(SpecUtil.requestSpecWithAuth(FD))
 		.when()
 		.get("userdetails")
 		.then()

@@ -23,7 +23,7 @@ public class MaterAPITest {
     @Test
 	public void masterAPITest() throws IOException {
 		given()
-		.spec(SpecUtil.requestSpecWithAuth())
+		.spec(SpecUtil.requestSpecWithAuth(FD))
 		.when()
 		.post("master")
 		.then()
