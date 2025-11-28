@@ -9,6 +9,8 @@ import java.io.IOException;
 
 import org.testng.annotations.Test;
 
+import com.api.utils.SpecUtil;
+
 import static com.api.constant.Role.*;
 
 import static com.api.utils.AuthTokenProvider.*;
@@ -23,20 +25,13 @@ public class UserDetailsAPITest{
 	@Test
 	public void userDetailsAPITest() throws IOException {
 	  
-		Header authHeader= new Header("Authorization", getToken(ENG));
+		
 		given()
-		.baseUri(getProperty("BASE_URI"))
-		.and()
-		.header(authHeader)
-		.and()
-		.contentType(ContentType.JSON)
-		.log().all()
+		.spec(SpecUtil.requestSpecWithAuth())
 		.when()
 		.get("userdetails")
 		.then()
-		.log().all()
-		.statusCode(200)
-		.time(lessThan(2000L))
+		.spec(SpecUtil.responseSpec_OK())
 		.body(JsonSchemaValidator.matchesJsonSchemaInClasspath("response-schema/UserDetailsSchema.json"));
 	}
 }

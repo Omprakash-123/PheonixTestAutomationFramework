@@ -9,6 +9,9 @@ import java.io.IOException;
 import org.testng.annotations.Test;
 
 import com.api.pojo.UserCredentials;
+import com.api.utils.SpecUtil;
+
+import static com.api.utils.SpecUtil.*;
 
 import static com.api.utils.ConfigManager.*;
 
@@ -26,22 +29,10 @@ public class LoginAPIRequestTest {
 		
 		
 		given()
-		.baseUri(getProperty("BASE_URI"))
-		.and()
-		.contentType(ContentType.JSON)
-		.and()
-		.accept(ContentType.JSON)
-		.and()
-		.body(userCredentials)
-		.log().uri()
-		.log().headers()
-		.log().method()
-		.log().body()
+		.spec(SpecUtil.requestSpec(userCredentials))
 		.when()
 		.post("login")
-		.then()
-		.statusCode(200)
-		.time(lessThan(2000L))
+		.then().spec(SpecUtil.responseSpec())
 		.and()
 		.body("message", equalTo("Success"))
 		.log().body()
