@@ -10,6 +10,13 @@ import java.util.List;
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
+import com.api.constant.Model;
+import com.api.constant.OEM;
+import com.api.constant.Platform;
+import com.api.constant.Problem;
+import com.api.constant.Product;
+import com.api.constant.ServiceLocation;
+import com.api.constant.Warranty_Status;
 import com.api.request.model.CreateJobPayLoad;
 import com.api.request.model.Customer;
 import com.api.request.model.CustomerAddress;
@@ -27,12 +34,12 @@ public class CreateJobAPITest {
 		
     	Customer cutomer=new Customer("Jatin","Sharma","8806144202","1234567890","sonawaneomprakash222@gmail.com","");
     	CustomerAddress customerAddress = new CustomerAddress("D 404", "Vasant Galaxy", "Bangar nagar", "Inorbit", "Mumbai", "411039", "India", "Maharastra");
-    	CustomerProduct customerProduct =new CustomerProduct(DateTimeUtil.getTimeWithDaysAgo(10), "22138664331392", "22138664331392", "22138664331392", DateTimeUtil.getTimeWithDaysAgo(10), 3, 3);
-    	Problems problem=new Problems(1,"Battery Isssue");
+    	CustomerProduct customerProduct =new CustomerProduct(DateTimeUtil.getTimeWithDaysAgo(10), "22138664331392", "22138664331392", "22138664331392", DateTimeUtil.getTimeWithDaysAgo(10), Product.NEXUS_2.getCode(), Model.NEXUS_2_BLUE.getCode());
+    	Problems problem=new Problems(Problem.SMARTPHONE_IS_RUNNING_SLOW.getCode(),"Battery Isssue");
     	List<Problems> problemList= new ArrayList<Problems>();
     	problemList.add(problem);
     	
-    	CreateJobPayLoad  createJobPayLoad=new CreateJobPayLoad(0, 2, 1, 2, cutomer, customerAddress, customerProduct, problemList);
+    	CreateJobPayLoad  createJobPayLoad=new CreateJobPayLoad(ServiceLocation.SERVICE_LOCATION_A.getCode(), Platform.FRONT_DESK.getCode(), Warranty_Status.IN_WARRANTY.getCode(), OEM.GOOGLE.getCode(), cutomer, customerAddress, customerProduct, problemList);
     	
     	
     	given()
