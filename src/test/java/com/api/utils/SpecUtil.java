@@ -5,7 +5,9 @@ import java.io.IOException;
 import org.hamcrest.Matchers;
 
 import static com.api.constant.Role.*;
-import com.api.pojo.UserCredentials;
+
+import com.api.constant.Role;
+import com.api.request.model.UserCredentials;
 
 import static com.api.utils.ConfigManager.*;
 
@@ -35,13 +37,13 @@ public class SpecUtil {
 	   return request;
    }
    
-   public static RequestSpecification requestSpecWithAuth() throws IOException {
+   public static RequestSpecification requestSpecWithAuth(Role role) throws IOException {
 	   //to take care of the common request sections(methods)
 	  RequestSpecification request=new RequestSpecBuilder()
 	   .setBaseUri(getProperty("BASE_URI"))
 	   .setContentType(ContentType.JSON)
 	   .setAccept(ContentType.JSON)
-	   .addHeader("Authorization", AuthTokenProvider.getToken(FD))
+	   .addHeader("Authorization", AuthTokenProvider.getToken(role))
 	   .log(LogDetail.URI)
 	   .log(LogDetail.METHOD)
 	   .log(LogDetail.HEADERS)
@@ -49,6 +51,23 @@ public class SpecUtil {
 	   .build();
 	   return request;
    }
+   
+   public static RequestSpecification requestSpecWithAuth(Role role, Object payload) throws IOException {
+	   //to take care of the common request sections(methods)
+	  RequestSpecification request=new RequestSpecBuilder()
+	   .setBaseUri(getProperty("BASE_URI"))
+	   .setContentType(ContentType.JSON)
+	   .setAccept(ContentType.JSON)
+	   .addHeader("Authorization", AuthTokenProvider.getToken(role))
+	   .setBody(payload)
+	   .log(LogDetail.URI)
+	   .log(LogDetail.METHOD)
+	   .log(LogDetail.HEADERS)
+	   .log(LogDetail.BODY)
+	   .build();
+	   return request;
+   }
+   
    
    
    //POST-PUT-PATCH(Body)
