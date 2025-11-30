@@ -1,8 +1,8 @@
-package com.demo.csv;
+package com.dataproviders.api.bean;
 
 import com.opencsv.bean.CsvBindByName;
 
-public class UserPOJO {
+public class UserBean {
 	
 	//put same name 
     @CsvBindByName(column="username")
@@ -10,10 +10,10 @@ public class UserPOJO {
     @CsvBindByName(column="passowrd")
 	private String y;
 
-	public UserPOJO() {
+	public UserBean() {
 		
 	}
-	public UserPOJO(String username, String password) {
+	public UserBean(String username, String password) {
 		super();
 		this.x = username;
 		this.y = password;
