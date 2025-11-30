@@ -1,4 +1,4 @@
-package com.api.test;
+package com.api.test.datadriven;
 
 import static com.api.utils.SpecUtil.requestSpec;
 import static com.api.utils.SpecUtil.responseSpec;
@@ -12,21 +12,21 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.api.request.model.UserCredentials;
+import com.dataproviders.api.bean.UserBean;
 
-public class LoginAPIRequestTest {
+public class LoginAPIDataDrivenTest {
 
-	private UserCredentials userCredentials;
 
-	@BeforeMethod(description = "Create the Payload for the Login API")
-	public void setup() {
-		userCredentials = new UserCredentials("iamfd", "password");
-	}
-
-	@Test(description = "Verifying if login api is working for FD user", groups = { "api", "regression", "smoke" })
-	public void loginAPITest1() throws IOException {
+	@Test(description = "Verifying if login api is working for FD user",
+			groups = { "api", "regression", "datadariven" },
+	        dataProviderClass=com.dataproviders.DataProviderUtils.class,  //fully qualified name
+	        dataProvider="LoginAPIDataProvider"
+			
+			)
+	public void loginAPITest1(UserBean userbean) throws IOException {
 
 		given()
-		.spec(requestSpec(userCredentials))
+		.spec(requestSpec(userbean))
 		.when().post("login")
 		.then()
 		.spec(responseSpec())

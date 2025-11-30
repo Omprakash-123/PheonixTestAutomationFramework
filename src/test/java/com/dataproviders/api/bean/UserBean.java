@@ -7,7 +7,7 @@ public class UserBean {
 	//put same name 
     @CsvBindByName(column="username")
 	private String x;
-    @CsvBindByName(column="passowrd")
+    @CsvBindByName(column="password")
 	private String y;
 
 	public UserBean() {
